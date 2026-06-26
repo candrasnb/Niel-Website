@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Sinambela & Rekan | Law Firm & Legal Consultants</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0a1128; /* Deep Navy */
+            --primary-light: #1c2541;
+            --accent: #c5a880; /* Corporate Gold */
+            --accent-hover: #b39266;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --text-dim: #9ca3af;
+            --bg-light: #f8f9fa;
+            --border: rgba(197, 168, 128, 0.2);
+            --shadow-premium: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { color: var(--text-dark); background-color: #ffffff; line-height: 1.7; overflow-x: hidden; padding-bottom: 90px; }
+
+        h1, h2, h3, .brand-name { font-family: 'Cinzel', serif; letter-spacing: 0.05em; }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 17, 40, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); transition: 0.3s;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 20px 25px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; color: var(--text-light); text-decoration: none; }
+        .logo-area i { font-size: 1.8rem; color: var(--accent); }
+        .brand-name { font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+        .brand-sub { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .nav-menu { display: flex; gap: 25px; list-style: none; }
+        .nav-menu a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-menu a:hover { color: var(--accent); }
+
+        /* KEKINIAN FLOATING BOTTOM NAVIGATION */
+        .bottom-nav {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 17, 40, 0.85); backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 168, 128, 0.3); padding: 10px 25px;
+            border-radius: 40px; display: none; justify-content: space-between;
+            align-items: center; width: 90%; max-width: 450px; z-index: 999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .bottom-nav-item {
+            display: flex; flex-direction: column; align-items: center;
+            color: var(--text-dim); text-decoration: none; font-size: 0.65rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s;
+        }
+        .bottom-nav-item i { font-size: 1.2rem; margin-bottom: 4px; transition: 0.3s; }
+        .bottom-nav-item:hover, .bottom-nav-item.active { color: var(--accent); }
+        .bottom-nav-item:hover i { transform: translateY(-2px); color: var(--accent); }
+        
+        /* Highlight khusus untuk tombol Chat WA di menu bawah */
+        .bottom-nav-item.chat-highlight { color: #25d366; }
+        .bottom-nav-item.chat-highlight:hover { color: #20ba5a; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 85vh; position: relative;
+            background: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.95)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat;
+            display: flex; align-items: center; padding: 120px 25px 60px; color: var(--text-light);
+        }
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 25px; line-height: 1.2; color: #ffffff; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 650px; margin: 0 auto 40px; font-weight: 300; }
+        
+        .btn-gold {
+            display: inline-block; padding: 15px 35px; background: var(--accent); color: var(--primary);
+            text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;
+            border-radius: 4px; transition: 0.3s; box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+        }
+        .btn-gold:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+        /* --- STATS BAR --- */
+        .stats-bar { background: var(--primary-light); border-bottom: 2px solid var(--accent); padding: 40px 25px; }
+        .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+        .stat-item h3 { font-size: 2.5rem; color: var(--accent); font-weight: 700; margin-bottom: 5px; }
+        .stat-item p { color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+
+        /* --- SECTION GENERIC --- */
+        section { padding: 90px 25px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background: var(--accent); }
+        .section-header p { color: #6b7280; max-width: 600px; margin: 0 auto; font-size: 1rem; }
+
+        /* --- ABOUT --- */
+        .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
+        .about-text p { margin-bottom: 20px; color: #4b5563; text-align: justify; }
+        .peradi-badge {
+            display: inline-flex; align-items: center; gap: 15px; background: var(--bg-light);
+            padding: 20px; border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; margin-top: 15px;
+        }
+        .peradi-badge i { font-size: 2rem; color: var(--primary); }
+        .peradi-badge div h4 { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+        .peradi-badge div p { margin: 0; font-size: 0.85rem; color: #6b7280; }
+        .about-img { border: 1px solid var(--border); padding: 12px; background: #fff; border-radius: 8px;}
+        .about-img img { width: 100%; height: auto; border-radius: 4px; display: block; }
+
+        /* --- PRACTICE AREAS --- */
+        .practice-bg { background-color: var(--bg-light); overflow: hidden; }
+        .grid-practice { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        
+        .practice-card {
+            background: #ffffff; padding: 40px 30px; border: 1px solid rgba(197, 168, 128, 0.15);
+            border-radius: 8px; transition: transform 0.6s var(--shadow-premium), box-shadow 0.6s var(--shadow-premium), opacity 0.6s ease;
+            position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .practice-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary); transition: 0.3s; opacity: 0; }
+        .practice-card:hover { transform: translateY(-8px) scale(1.02) !important; box-shadow: 0 20px 40px rgba(10,17,40,0.08); border-color: var(--accent); }
+        .practice-card:hover::before { opacity: 1; background: var(--accent); }
+        .practice-card i { font-size: 2.2rem; color: var(--accent); margin-bottom: 25px; display: inline-block; transition: 0.3s; }
+        .practice-card:hover i { transform: scale(1.1) rotate(5deg); }
+        .practice-card h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 15px; font-weight: 700; }
+        .practice-card p { color: #6b7280; font-size: 0.9rem; text-align: justify; }
+
+        /* PREMIUM ANIMATION FROM SIDES */
+        .reveal-left { opacity: 0; transform: translateX(-100px); }
+        .reveal-right { opacity: 0; transform: translateX(100px); }
+        .reveal-left.active, .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* --- TESTIMONIAL SLIDER --- */
+        .testimonial-bg { background: var(--primary); color: var(--text-light); }
+        .testimonial-bg .section-header h2 { color: #fff; }
+        .slider-container { max-width: 850px; margin: 0 auto; position: relative; overflow: hidden; min-height: 250px; }
+        .slide { display: none; text-align: center; padding: 10px 20px; }
+        .slide.active { display: block; animation: fadeIn 0.6s ease-in-out; }
+        .slide i { font-size: 2.3rem; color: var(--accent); margin-bottom: 15px; }
+        .slide p { font-size: 1.1rem; font-style: italic; color: var(--text-dim); margin-bottom: 20px; line-height: 1.8; }
+        .slide h4 { font-family: 'Cinzel', serif; color: var(--accent); font-size: 1rem; }
+        .slide span { font-size: 0.8rem; color: #6b7280; display: block; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .slider-dots { text-align: center; margin-top: 25px; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--accent); width: 26px; border-radius: 5px; }
+
+        /* --- FAQ ACCORDION --- */
+        .faq-max { max-width: 900px; margin: 0 auto; }
+        .faq-item { background: var(--bg-light); border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; margin-bottom: 15px; overflow: hidden; transition: 0.3s; }
+        .faq-question { padding: 22px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; color: var(--primary); transition: 0.3s; font-size: 1rem; }
+        .faq-question:hover { background: #eef1f5; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); background: #ffffff; }
+        .faq-answer p { padding: 25px 30px; color: #4b5563; font-size: 0.95rem; line-height: 1.8; text-align: justify; }
+        .faq-item.open { border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .faq-item.open .faq-answer { max-height: 1000px; border-top: 1px solid rgba(197, 168, 128, 0.15); }
+        .faq-item.open .faq-question i { transform: rotate(180deg); color: var(--accent); }
+        .faq-question i { transition: 0.3s; font-size: 0.9rem; margin-left: 15px; }
+
+        /* --- CONTACT & MAP --- */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .info-box { background: var(--primary-light); color: var(--text-light); padding: 50px; border-radius: 8px; border-bottom: 3px solid var(--accent); }
+        .info-box h3 { font-size: 1.8rem; margin-bottom: 30px; color: var(--accent); }
+        .info-item { display: flex; gap: 20px; margin-bottom: 25px; }
+        .info-item i { font-size: 1.2rem; color: var(--accent); margin-top: 5px; }
+        .info-item h4 { font-weight: 600; margin-bottom: 4px; color: #ffffff; }
+        .info-item p { color: var(--text-dim); font-size: 0.9rem; }
+        .map-box { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); min-height: 380px; }
+        .map-box iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+        /* --- FOOTER --- */
+        footer { background: #050a18; color: var(--text-dim); padding: 80px 25px 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; padding-bottom: 50px; }
+        .footer-logo h3 { color: #fff; font-size: 1.4rem; margin-bottom: 10px; }
+        .footer-links h4 { color: #fff; font-size: 1rem; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;}
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-links ul li a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+
+        /* --- GENERAL REVEAL ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 992px) {
+            .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .bottom-nav { display: flex; } /* Tampilkan menu bawah kekinian di mobile */
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Kekinian Floating Bottom Navigation Menu (Dengan Tombol Chat WA Pengganti Kontak) -->
+    <div class="bottom-nav">
+        <a href="#" class="bottom-nav-item active"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="#tentang" class="bottom-nav-item"><i class="fa-solid fa-user-tie"></i>Profil</a>
+        <a href="#keahlian" class="bottom-nav-item"><i class="fa-solid fa-briefcase"></i>Keahlian</a>
+        <a href="#testimoni" class="bottom-nav-item"><i class="fa-solid fa-star"></i>Review</a>
+        <a href="https://wa.me/6281911806263?text=Halo%20Kantor%20Hukum%20Daniel%20Sinambela%2C" target="_blank" class="bottom-nav-item chat-highlight"><i class="fa-brands fa-whatsapp"></i>Chat</a>
+    </div>
+
+    <!-- Top Navbar -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <div>
+                    <div class="brand-name">DS & Rekan</div>
+                    <div class="brand-sub">Law Firm</div>
+                </div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#faq">Q&A</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>DANIEL SINAMBELA<br><span>& REKAN</span></h1>
+            <p>Advokat & Konsultan Hukum Terpercaya, Menyediakan Solusi Hukum Litigasi & Non-Litigasi yang Presisi Selama Lebih dari Satu Dekade.</p>
+            <a href="https://wa.me/6281911806263?text=Halo%20Kantor%20Hukum%20Daniel%20Sinambela%2C" target="_blank" class="btn-gold">Konsultasi Hukum Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>2015</h3>
+                <p>Tahun Didirikan</p>
+            </div>
+            <div class="stat-item">
+                <h3>PERADI</h3>
+                <p>Anggota Utama Resmi</p>
+            </div>
+            <div class="stat-item">
+                <h3>Nasional</h3>
+                <p>Klien Lintas Provinsi</p>
+            </div>
+            <div class="stat-item">
+                <h3>Litigasi</h3>
+                <p>& Non-Litigasi Aktif</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="reveal">
+        <div class="about-layout">
+            <div class="about-text">
+                <h3>Keadilan & Integritas Profesional</h3>
+                <p>Didirikan sejak tahun <b>2015</b> di Jatiasih, Kota Bekasi, Kantor Hukum Daniel Sinambela & Rekan senantiasa berkomitmen penuh dalam memberikan layanan hukum berkualitas premium bagi seluruh lapisan masyarakat dan sektor bisnis.</p>
+                <p>Kami memiliki rekam jejak yang solid dalam menangani berbagai sengketa hukum, baik yang dihadapi oleh <b>perusahaan (korporasi)</b> maupun institusi dan <b>perorangan (privat)</b>. Wilayah jangkauan dan dedikasi pelayanan klien kami telah tersebar luas di berbagai kota strategis di seluruh wilayah Indonesia.</p>
+                
+                <div class="peradi-badge">
+                    <i class="fa-solid fa-gavel"></i>
+                    <div>
+                        <h4>Anggota Pertama PERADI</h4>
+                        <p>Kredibilitas penegakan hukum resmi yang diakui secara nasional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1470&auto=format&fit=crop" alt="Daniel Sinambela & Rekan Law Firm">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bidang Keahlian / Kamar Perkara (EFEK ANIMASI PREMIUM DARI SAMPING) -->
+    <div class="practice-bg">
+        <section id="keahlian">
+            <div class="section-header">
+                <h2>Bidang Keahlian</h2>
+                <p>Kami menguasai cakupan penanganan perkara yang luas, mencakup pendekatan strategis pada setiap lini hukum formal.</p>
+            </div>
+            <div class="grid-practice">
+                <!-- Slide In dari Kiri -->
+                <div class="practice-card reveal-left">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>Perkara Perusahaan</h3>
+                    <p>Penyelesaian sengketa bisnis, audit legalitas, sengketa antar pemegang saham, isu ketenagakerjaan korporasi, hingga perlindungan aset perusahaan.</p>
+                </div>
+                <!-- Slide In dari Kiri -->
+                <div class="practice-card reveal-left">
+                    <i class="fa-solid fa-user"></i>
+                    <h3>Perkara Perorangan</h3>
+                    <p>Pendampingan hukum personal meliputi sengketa waris, sengketa tanah/properti, gugatan wanprestasi individu, dan perlindungan hak privat.</p>
+                </div>
+                <!-- Slide In dari Kanan -->
+                <div class="practice-card reveal-right">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>Perdata & Perdata Khusus</h3>
+                    <p>Menangani sengketa niaga, kepailitan & PKPU, sengketa Hubungan Industrial (PHI), hingga klaim arbitrase komersial secara komprehensif.</p>
+                </div>
+                <!-- Slide In dari Kanan -->
+                <div class="practice-card reveal-right">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Pidana & Pidana Khusus</h3>
+                    <p>Pendampingan hukum pidana umum serta tindak pidana khusus seperti korupsi, kejahatan siber (UU ITE), tindak pidana ekonomi, dan pencucian uang.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Testimoni Slide Section -->
+    <div class="testimonial-bg" id="testimoni">
+        <section class="reveal">
+            <div class="section-header">
+                <h2>Apresiasi Klien</h2>
+                <p style="color: var(--text-dim);">Kepercayaan dari berbagai sektor dan wilayah di Indonesia adalah komitmen utama kami.</p>
+            </div>
+            <div class="slider-container">
+                <div class="slide active">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Penyelesaian sengketa industrial perusahaan kami di luar pengadilan ditangani secara taktis dan sangat profesional. Hasil memuaskan tanpa konflik berkepanjangan."</p>
+                    <h4>Direksi Manufaktur</h4>
+                    <span>Jakarta</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Sangat bersyukur mempercayakan sengketa tanah keluarga kepada kantor ini. Pendekatan hukumnya sangat transparan, jujur, dan berpihak pada hak kami hingga putusan akhir."</p>
+                    <h4>Hendra Kusuma</h4>
+                    <span>Bekasi</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Respon cepat dan pemahaman mendalam mengenai tindak pidana khusus korporasi membuat manajemen kami merasa aman terlindungi selama seluruh proses hukum berjalan."</p>
+                    <h4>Legal Manager Korporat</h4>
+                    <span>Surabaya</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Pendampingan perkara perdata niaga ekspor-impor kami ditangani dengan luar biasa. Pengetahuan regulasi lintas batas mereka sangat tajam."</p>
+                    <h4>Pelaku Usaha Dagang</h4>
+                    <span>Medan</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Bantuan hukum non-litigasi dalam penyusunan draf kontrak bisnis kemitraan membuat investasi kami jauh lebih aman dan memiliki kepastian hukum."</p>
+                    <h4>Investor Properti</h4>
+                    <span>Bandung</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Penanganan kasus pidana umum yang menimpa kerabat kami dikawal dengan penuh integritas tinggi dan hak-hak asasi klien dijaga ketat di kepolisian."</p>
+                    <h4>Ibu S. Margaretha</h4>
+                    <span>Semarang</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Firma hukum ini sangat andal dalam menyelesaikan sengketa kepailitan perusahaan ritel kami. Komunikasi tim advokatnya berjalan sangat efektif."</p>
+                    <h4>Pengusaha Ritel</h4>
+                    <span>Makassar</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Sangat objektif memberikan legal opinion. Kami tidak diberikan janji-janji manis, melainkan analisis risiko hukum yang nyata dan solusi konkrit."</p>
+                    <h4>Direktur Logistik</h4>
+                    <span>Palembang</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Meskipun sengketa terjadi di daerah, tim dari Bekasi tetap menunjukkan mobilitas tinggi dan komitmen penuh mendampingi kami langsung di persidangan."</p>
+                    <h4>Fransiskus S.</h4>
+                    <span>Yogyakarta</span>
+                </div>
+                <div class="slide">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Penyelesaian masalah penagihan piutang komersial antar perusahaan tuntas dengan jalur mediasi formal tanpa perlu menguras energi di pengadilan."</p>
+                    <h4>Finance Director</h4>
+                    <span>Denpasar</span>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ / Q&A Section -->
+    <section id="faq" class="reveal">
+        <div class="section-header">
+            <h2>Pertanyaan Umum (Q&A)</h2>
+            <p>Informasi esensial mengenai skema hukum, konsultasi, dan tata cara penanganan perkara di kantor hukum kami.</p>
+        </div>
+        <div class="faq-max">
+            <div class="faq-item">
+                <div class="faq-question">
+                    1. Apakah kantor hukum ini menerima perkara di luar wilayah Bekasi?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya. Meskipun kantor kami berbasis di Jatiasih, Kota Bekasi, ruang lingkup pelayanan kami mencakup skala nasional. Advokat kami memiliki izin resmi yang berlaku di seluruh pengadilan di Indonesia, dan saat ini klien kami sudah tersebar di berbagai kota besar.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    2. Apa perbedaan mendasar antara penanganan Litigasi dan Non-Litigasi?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Litigasi merupakan proses penyelesaian sengketa melalui jalur peradilan formal (gugatan/sidang di pengadilan). Sementara Non-Litigasi adalah penyelesaian di luar pengadilan melalui mekanisme alternatif seperti negosiasi, mediasi, somasi strategis, atau pembuatan draf perjanjian perdamaian.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    3. Apa yang dimaksud dengan perkara Pidana Khusus dan Perdata Khusus?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Perdata Khusus adalah sengketa sipil yang memiliki hukum acara tersendiri, seperti perkara Kepailitan & PKPU, Sengketa Hubungan Industrial (PHI), atau HAKI. Sedangkan Pidana Khusus adalah kejahatan yang diatur di luar KUHP umum, contohnya korupsi (Tipikor), pelanggaran UU ITE, pencucian uang (TPPU), dan perpajakan.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    4. Bagaimana prosedur awal untuk melakukan konsultasi hukum?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Anda dapat menghubungi hotline resmi kami di +62 819-1180-6263 terlebih dahulu melalui pesan WhatsApp atau panggilan telepon. Tim kami akan melakukan penjadwalan pertemuan langsung di kantor atau via daring.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    5. Apakah identitas rahasia perusahaan dan data pribadi saya dijamin aman?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Tentu. Berdasarkan Undang-Undang Advokat dan Kode Etik Advokat Indonesia, kami diwajibkan secara hukum untuk menjaga kerahasiaan seluruh data, berkas, dokumen, dan informasi yang disampaikan oleh klien.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    6. Bagaimana struktur perhitungan biaya (Operational Fee & Success Fee) di kantor ini?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Skema biaya ditentukan secara transparan setelah kami menganalisis tingkat kerumitan kasus, volume dokumen, posisi hukum klien, serta estimasi jarak jangkauan perkara. Seluruh kesepakatan biaya akan dituangkan secara tertulis di dalam Perjanjian Jasa Hukum (PJH).</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    7. Apakah Daniel Sinambela & Rekan terdaftar resmi di organisasi advokat nasional?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, pendiri dan seluruh rekan sejawat di firma hukum kami merupakan anggota resmi PERADI (Perhimpunan Advokat Indonesia) sebagai organisasi wadah tunggal advokat nasional yang sah.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    8. Jenis korporasi seperti apa saja yang biasa ditangani oleh kantor hukum Anda?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Kami melayani berbagai skala bisnis korporasi, mulai dari perseroan terbatas (PT) berskala manufaktur, logistik, perdagangan, kontraktor properti, ritel komersial, hingga pelaku usaha mikro yang membutuhkan mitigasi sengketa internal.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    9. Berapa lama durasi rata-rata penyelesaian sebuah kasus hukum?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Durasi penyelesaian sangat situasional. Melalui jalur Non-Litigasi (mediasi), sengketa seringkali selesai dalam beberapa minggu. Namun, apabila sengketa masuk ke ranah Litigasi di Pengadilan Negeri hingga tingkat kasasi di Mahkamah Agung, prosesnya dapat memakan waktu berbulan-bulan.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    10. Apakah tim Advokat dapat mendampingi klien dalam tahap pemeriksaan kepolisian (BAP)?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sangat bisa. Hak untuk didampingi advokat diatur ketat dalam KUHAP. Kami siap memberikan asistensi melekat pada setiap proses pemeriksaan sanksi pidana, baik kapasitas Anda sebagai pelapor, saksi, maupun terlapor/tersangka.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Lokasi Kantor -->
+    <section id="kontak" class="reveal">
+        <div class="section-header">
+            <h2>Hubungi Kantor Kami</h2>
+            <p>Jadwalkan konsultasi formal bersama tim kuasa hukum kami untuk penyelesaian masalah legalitas Anda.</p>
+        </div>
+        <div class="contact-layout">
+            <div class="info-box">
+                <h3>Informasi Kontak</h3>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Alamat Kantor</h4>
+                        <p>Jatiasih, Kota Bekasi, Jawa Barat, Indonesia</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>Hotline Telepon / WA</h4>
+                        <p>+62 819-1180-6263</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <h4>Jam Operasional</h4>
+                        <p>Senin – Jumat: 09.00 - 17.00 WIB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7725902409743!2d106.9602419!3d-6.2935574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698da6282b0123%3A0x6b445353ee9cfa9!2sJatiasih%2C%20Bekasi%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <h3>DANIEL SINAMBELA & REKAN</h3>
+                <p>Firma hukum profesional terdaftar, memberikan dedikasi penyelesaian hukum berkeadilan di seluruh Indonesia sejak 2015.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#keahlian">Bidang Keahlian</a></li>
+                    <li><a href="#faq">Pertanyaan (FAQ)</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Kredibilitas</h4>
+                <ul>
+                    <li><a href="#tentang">Anggota PERADI</a></li>
+                    <li><a href="#keahlian">Litigasi & Non-Litigasi</a></li>
+                    <li><a href="#keahlian">Kasus Perdata & Pidana</a></li>
+                    <li><a href="#kontak">Kantor Jatiasih Bekasi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 DANIEL SINAMBELA & REKAN. All Rights Reserved.</p>
+            <p>Jatiasih, Kota Bekasi, Indonesia</p>
+        </div>
+    </footer>
+
+    <script>
+        // Advanced Scroll Intersection Observer (Mendukung Efek Geser Samping)
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+        
+        revealElements.forEach(el => scrollObserver.observe(el));
+
+        // FAQ Accordion System
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+
+        // Testimonial Slider System (10 Slides)
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlideIndex = index;
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        function nextSlide() {
+            let next = (currentSlideIndex + 1) % slides.length;
+            showSlide(next);
+        }
+
+        setInterval(nextSlide, 5000);
+
+        // Auto Active Indicator untuk Bottom Menu saat di-scroll (Kecuali tombol Chat WA)
+        const sections = document.querySelectorAll('section, div.testimonial-bg, body');
+        const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
+
+            bottomNavItems.forEach(item => {
+                // Jangan utak-atik status active/posisi scroll jika itu tombol eksternal WhatsApp
+                if (item.classList.contains('chat-highlight')) return;
+
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                } else if (current === '' && item.getAttribute('href') === '#') {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
