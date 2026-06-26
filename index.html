@@ -3,8 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Sinambela & Rekan | Law Firm & Legal Consultants</title>
     
+    <!-- SEO Meta Tags Utama -->
+    <title>Pengacara Daniel Sinambela & Rekan | Law Firm & Advokat Bekasi</title>
+    <meta name="description" content="Kantor Hukum Daniel Sinambela & Rekan. Pengacara & Konsultan Hukum terpercaya di Jatiasih, Kota Bekasi. Melayani perkara perdata, pidana, korporasi, dan litigasi nasional.">
+    <meta name="keywords" content="pengacara daniel, daniel sinambela, pengacara bekasi, advokat bekasi, konsultan hukum jatiasih, law firm bekasi, peradi bekasi, kantor hukum daniel sinambela">
+    <meta name="author" content="Daniel Sinambela & Rekan">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://domain-anda-disini.com">
+
+    <!-- Open Graph / Facebook (Untuk Preview WhatsApp & Sosial Media) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://domain-anda-disini.com">
+    <meta property="og:title" content="Pengacara Daniel Sinambela & Rekan | Law Firm & Advokat Bekasi">
+    <meta property="og:description" content="Layanan hukum profesional, jujur, dan berintegritas anggota PERADI di Bekasi. Hubungi kami untuk konsultasi hukum sekarang.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1470&auto=format&fit=crop">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://domain-anda-disini.com">
+    <meta property="twitter:title" content="Pengacara Daniel Sinambela & Rekan | Law Firm & Advokat Bekasi">
+    <meta property="twitter:description" content="Kantor Hukum & Advokat terpercaya di Bekasi. Melayani perkara litigasi dan non-litigasi.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1470&auto=format&fit=crop">
+
+    <!-- JSON-LD Structured Data / Schema Markup (Sangat Disukai Mesin Pencari Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Daniel Sinambela & Rekan",
+      "description": "Kantor Hukum dan Advokat profesional terdaftar PERADI di Jatiasih, Kota Bekasi. Melayani kasus pidana, perdata, korporasi, dan hubungan industrial.",
+      "url": "https://domain-anda-disini.com",
+      "telephone": "+6281911806263",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jatiasih",
+        "addressLocality": "Kota Bekasi",
+        "addressRegion": "Jawa Barat",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-6.2935574",
+        "longitude": "106.9602419"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    }
+    </script>
+
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -48,7 +106,7 @@
         .nav-menu a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
         .nav-menu a:hover { color: var(--accent); }
 
-        /* KEKINIAN FLOATING BOTTOM NAVIGATION */
+        /* FLOATING BOTTOM NAVIGATION (MOBILE ONLY) */
         .bottom-nav {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: rgba(10, 17, 40, 0.85); backdrop-filter: blur(20px);
@@ -66,7 +124,6 @@
         .bottom-nav-item:hover, .bottom-nav-item.active { color: var(--accent); }
         .bottom-nav-item:hover i { transform: translateY(-2px); color: var(--accent); }
         
-        /* Highlight khusus untuk tombol Chat WA di menu bawah */
         .bottom-nav-item.chat-highlight { color: #25d366; }
         .bottom-nav-item.chat-highlight:hover { color: #20ba5a; }
 
@@ -133,8 +190,8 @@
         .practice-card p { color: #6b7280; font-size: 0.9rem; text-align: justify; }
 
         /* PREMIUM ANIMATION FROM SIDES */
-        .reveal-left { opacity: 0; transform: translateX(-100px); }
-        .reveal-right { opacity: 0; transform: translateX(100px); }
+        .reveal-left { opacity: 0; transform: translateX(-100px); transition: all 0.8s var(--shadow-premium); }
+        .reveal-right { opacity: 0; transform: translateX(100px); transition: all 0.8s var(--shadow-premium); }
         .reveal-left.active, .reveal-right.active { opacity: 1; transform: translateX(0); }
 
         /* --- TESTIMONIAL SLIDER --- */
@@ -197,14 +254,14 @@
         }
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .bottom-nav { display: flex; } /* Tampilkan menu bawah kekinian di mobile */
+            .bottom-nav { display: flex; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Kekinian Floating Bottom Navigation Menu (Dengan Tombol Chat WA Pengganti Kontak) -->
+    <!-- Floating Bottom Navigation Menu (Mobile Only) -->
     <div class="bottom-nav">
         <a href="#" class="bottom-nav-item active"><i class="fa-solid fa-house"></i>Home</a>
         <a href="#tentang" class="bottom-nav-item"><i class="fa-solid fa-user-tie"></i>Profil</a>
@@ -287,7 +344,7 @@
         </div>
     </section>
 
-    <!-- Bidang Keahlian / Kamar Perkara (EFEK ANIMASI PREMIUM DARI SAMPING) -->
+    <!-- Bidang Keahlian Section -->
     <div class="practice-bg">
         <section id="keahlian">
             <div class="section-header">
@@ -295,25 +352,21 @@
                 <p>Kami menguasai cakupan penanganan perkara yang luas, mencakup pendekatan strategis pada setiap lini hukum formal.</p>
             </div>
             <div class="grid-practice">
-                <!-- Slide In dari Kiri -->
                 <div class="practice-card reveal-left">
                     <i class="fa-solid fa-building"></i>
                     <h3>Perkara Perusahaan</h3>
                     <p>Penyelesaian sengketa bisnis, audit legalitas, sengketa antar pemegang saham, isu ketenagakerjaan korporasi, hingga perlindungan aset perusahaan.</p>
                 </div>
-                <!-- Slide In dari Kiri -->
                 <div class="practice-card reveal-left">
                     <i class="fa-solid fa-user"></i>
                     <h3>Perkara Perorangan</h3>
                     <p>Pendampingan hukum personal meliputi sengketa waris, sengketa tanah/properti, gugatan wanprestasi individu, dan perlindungan hak privat.</p>
                 </div>
-                <!-- Slide In dari Kanan -->
                 <div class="practice-card reveal-right">
                     <i class="fa-solid fa-briefcase"></i>
                     <h3>Perdata & Perdata Khusus</h3>
                     <p>Menangani sengketa niaga, kepailitan & PKPU, sengketa Hubungan Industrial (PHI), hingga klaim arbitrase komersial secara komprehensif.</p>
                 </div>
-                <!-- Slide In dari Kanan -->
                 <div class="practice-card reveal-right">
                     <i class="fa-solid fa-shield-halved"></i>
                     <h3>Pidana & Pidana Khusus</h3>
@@ -323,7 +376,7 @@
         </section>
     </div>
 
-    <!-- Testimoni Slide Section -->
+    <!-- Testimoni Slider Section -->
     <div class="testimonial-bg" id="testimoni">
         <section class="reveal">
             <div class="section-header">
@@ -577,7 +630,7 @@
     </footer>
 
     <script>
-        // Advanced Scroll Intersection Observer (Mendukung Efek Geser Samping)
+        // Advanced Scroll Intersection Observer
         const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
         
         const scrollObserver = new IntersectionObserver((entries) => {
@@ -628,7 +681,7 @@
 
         setInterval(nextSlide, 5000);
 
-        // Auto Active Indicator untuk Bottom Menu saat di-scroll (Kecuali tombol Chat WA)
+        // Auto Active Indicator untuk Bottom Menu saat di-scroll
         const sections = document.querySelectorAll('section, div.testimonial-bg, body');
         const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
 
@@ -637,13 +690,12 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
+                if (window.pageYOffset >= (sectionTop - 200)) {
                     current = section.getAttribute('id') || '';
                 }
             });
 
             bottomNavItems.forEach(item => {
-                // Jangan utak-atik status active/posisi scroll jika itu tombol eksternal WhatsApp
                 if (item.classList.contains('chat-highlight')) return;
 
                 item.classList.remove('active');
